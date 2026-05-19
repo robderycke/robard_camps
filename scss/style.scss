@@ -1,0 +1,253 @@
+// ==========================================
+// 1. SETTINGS & VARIABLES
+// ==========================================
+$primary-color:   #4a5d4e; 
+$secondary-color: #8fa882; 
+$tertiary-color:  #d1dcd0; 
+$dark-color:      #2b382d; 
+$white:           #ffffff;
+
+$font-heading:    'Georgia', serif;
+$font-body:       'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+$transition-speed: 0.3s;
+
+// ==========================================
+// 2. GENERIC & BASE
+// ==========================================
+body {
+    font-family: $font-body;
+    background-color: $tertiary-color;
+    color: #333333;
+    overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: $font-heading;
+    color: $dark-color;
+}
+
+// ==========================================
+// 3. COMPONENTS & BEM ELEMENTS
+// ==========================================
+.c-header {
+    width: 100%;
+}
+
+.c-navbar {
+    background-color: $primary-color !important;
+    padding: 1.2rem 0;
+    
+    &__brand {
+        font-family: $font-heading;
+        font-weight: bold;
+        color: $white !important;
+        font-size: 1.5rem;
+    }
+    
+    &__link {
+        color: rgba($white, 0.8) !important;
+        margin-left: 1.5rem;
+        transition: color $transition-speed ease;
+        
+        &:hover, &.active {
+            color: $white !important;
+            border-bottom: 2px solid $secondary-color;
+        }
+    }
+}
+
+.c-hero {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1501555088652-021faa106b9b?auto=format&fit=crop&w=1600&q=80');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    min-height: 75vh;
+    padding: 4rem 1rem;
+    
+    &--small {
+        min-height: 40vh;
+        background-attachment: scroll;
+    }
+
+    &__title {
+        color: $white !important; // !important toegevoegd om eventuele Bootstrap display-classes te overschrijven
+        font-size: calc(1.8rem + 2vw);
+        text-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    }
+}
+
+.c-section {
+    padding: 6rem 0;
+    
+    &--dark {
+        background-color: $dark-color;
+    }
+}
+
+.c-btn {
+    border-radius: 50px;
+    padding: 0.75rem 2rem;
+    font-weight: 600;
+    transition: all $transition-speed ease-in-out;
+    
+    &--primary {
+        background-color: $secondary-color;
+        color: $dark-color;
+        border: none;
+        
+        &:hover {
+            background-color: lighten($secondary-color, 10%);
+            transform: scale(1.05);
+            color: $dark-color;
+        }
+    }
+    
+    &--outline {
+        border: 2px solid $primary-color;
+        color: $primary-color;
+        background: transparent;
+        
+        &:hover {
+            background-color: $primary-color;
+            color: $white;
+        }
+    }
+}
+
+.c-blockquote {
+    padding: 2rem;
+    
+    &__heading {
+        font-style: italic;
+        margin-bottom: 1rem;
+    }
+    
+    &__text {
+        font-size: 1.1rem;
+        line-height: 1.6;
+    }
+}
+
+.c-card {
+    background: $white;
+    border-radius: 20px;
+    border: none;
+    transition: transform $transition-speed ease;
+    
+    &:hover {
+        transform: translateY(-8px);
+    }
+    
+    &__icon {
+        font-size: 2.5rem;
+        color: $secondary-color;
+    }
+}
+
+.c-route-card {
+    border: none !important;
+    border-radius: 15px !important;
+    overflow: hidden;
+    background: $white;
+    
+    &__img {
+        height: 180px;
+        object-fit: cover;
+    }
+}
+
+.c-accordion {
+    &__button {
+        background-color: $white !important;
+        color: $dark-color !important;
+        font-family: $font-heading;
+        font-weight: bold;
+        
+        &:not(.collapsed) {
+            background-color: $secondary-color !important;
+            color: $white !important;
+        }
+    }
+}
+
+.c-cta-block {
+    &__inner {
+        background: linear-gradient(135deg, $primary-color, $dark-color);
+    }
+}
+
+.c-footer {
+    background-color: $dark-color;
+    text-align: left; // Basisuitlijning voor de gehele footer altijd links
+    
+    &__links {
+        padding-left: 0;
+        list-style: none;
+        
+        li {
+            margin-bottom: 0.5rem;
+        }
+        
+        a {
+            color: rgba($white, 0.7);
+            text-decoration: none;
+            transition: all $transition-speed ease;
+            display: inline-block;
+            
+            i {
+                font-size: 0.8rem;
+                transition: transform $transition-speed ease;
+            }
+            
+            &:hover {
+                color: $white;
+                transform: translateX(5px); // Subtiel interactief effect naar rechts bij hover
+                
+                i {
+                    color: $secondary-color;
+                }
+            }
+        }
+    }
+}
+
+.c-back-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: -60px;
+    width: 50px;
+    height: 50px;
+    background-color: $primary-color;
+    color: $white;
+    border: none;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    cursor: pointer;
+    z-index: 1000;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    
+    &--visible {
+        right: 30px;
+    }
+}
+
+.x-small {
+    font-size: 0.75rem;
+}
+
+// ==========================================
+// 4. RESPONSIVE BREAKPOINTS (Bubbling)
+// ==========================================
+@media (max-width: 768px) {
+    .c-section {
+        padding: 3.5rem 0;
+    }
+    .c-hero {
+        min-height: 50vh;
+    }
+}
